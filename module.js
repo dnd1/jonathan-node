@@ -2,17 +2,21 @@ var fs = require('fs');
 var path = require('path')
 var results = [];
 
+
 module.exports = function(route, ext, callback){
 
-fs.readdir(route, function (err, data){
-if (err)
-return callback(err);
-else{
-  for (var i in data) {
-    if(path.extname(data[i])=="."+process.argv[3])
+// no funciona con esa linea
+// fs.readdir(route, function callback (err,data){
+
+fs.readdir(route, function (err,data){
+	if (err)
+		return callback(err, null);
+	else{
+  for (var i = 0; i < data.length; i++) {
+    if(path.extname(data[i]) =="."+process.argv[3])
     results.push(data[i]);
   }
-  callback(null,data);
+  callback(null,results);
 }
 
 });
