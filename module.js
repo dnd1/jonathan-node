@@ -13,7 +13,7 @@ fs.readdir(route, function (err,data){
 		return callback(err, null);
 	else{
   for (var i = 0; i < data.length; i++) {
-    if(path.extname(data[i]) =="."+process.argv[3])
+    if(path.extname(data[i]) =="."+ext)
     results.push(data[i]);
   }
   callback(null,results);
